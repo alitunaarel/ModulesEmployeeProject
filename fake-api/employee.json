@@ -1,0 +1,22 @@
+{
+  "employees": [
+    {
+      "name": "Radamel Falcao",
+      "department": "Forvet",
+      "salary": 2000,
+      "id": 1
+    },
+    {
+      "name": "Muslera",
+      "department": "Kaleci",
+      "salary": 5000,
+      "id": 2
+    },
+    {
+      "name": "ali",
+      "department": "galatasaray",
+      "salary": 3000,
+      "id": 3
+    }
+  ]
+}
