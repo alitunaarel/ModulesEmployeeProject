@@ -1,5 +1,5 @@
 export class UI {
-    constructor(){
+    constructor() {
         this.employeesList = document.getElementById("employees");
         this.updateButton = document.getElementById("update");
         this.nameInput = document.getElementById("name");
@@ -7,7 +7,7 @@ export class UI {
         this.salaryInput = document.getElementById("salary");
     }
 
-    addAllEmployeeToUI(employees){
+    addAllEmployeeToUI(employees) {
 
 
         let result = "";
@@ -26,12 +26,12 @@ export class UI {
 
         this.employeesList.innerHTML = result;
     }
-    clearInputs(){
+    clearInputs() {
         this.nameInput.value = "";
-        this.departmentInput.value="";
-        this.salaryInput.value="";
+        this.departmentInput.value = "";
+        this.salaryInput.value = "";
     }
-    addEmployeeToUI(employee){
+    addEmployeeToUI(employee) {
 
 
         this.employeesList.innerHTML += `<tr>
@@ -44,5 +44,8 @@ export class UI {
         <td> <a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td>
     </tr>`;
 
+    }
+    deleteEmployeeFromUI(element) {
+        element.remove();
     }
 }
