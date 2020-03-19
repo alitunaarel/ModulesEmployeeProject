@@ -4,6 +4,9 @@ import {
 import {
     UI
 } from "./ui";
+import {
+    networkInterfaces
+} from "os";
 //selecting elements
 
 const form = document.getElementById("employee-form");
@@ -21,7 +24,8 @@ eventListeners();
 
 function eventListeners() {
     document.addEventListener("DOMContentLoaded", getAllEmployees);
-    form.addEventListener("submit", addEmployee)
+    form.addEventListener("submit", addEmployee);
+    employeesList.addEventListener("click", UpdateOrDelete);
 }
 
 function getAllEmployees() {
@@ -54,6 +58,37 @@ function addEmployee(e) {
     ui.clearInputs();
     e.preventDefault();
 }
+
+function UpdateOrDelete(e) {
+    if (e.target.id === "delete-employee") {
+        deleteEmployee(e.target);
+
+    } else if (e.target.id === "update-employee") {
+
+    }
+}
+
+function deleteEmployee(targetEmployee) {
+    const id = targetEmployee.parentElement.previousElementSibling.previousElementSibling.textContent;
+
+    request.delete(id)
+        .then(message => {
+            ui.deleteEmployeeFromUI(targetEmployee.parentElement.parentElement);
+        })
+        .catch(err => console.log(err));
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // request.get()
 // .then(employees => console.log(employees))

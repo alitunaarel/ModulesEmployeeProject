@@ -1,22 +1,28 @@
 {
   "employees": [
     {
-      "name": "Radamel Falcao",
-      "department": "Forvet",
-      "salary": 2000,
+      "name": "wesley",
+      "department": "Orta saha",
+      "salary": 10,
       "id": 1
     },
     {
-      "name": "Muslera",
-      "department": "Kaleci",
-      "salary": 5000,
+      "name": "muslera",
+      "department": "kaleci",
+      "salary": 1,
       "id": 2
     },
     {
-      "name": "ali",
-      "department": "galatasaray",
-      "salary": 3000,
+      "name": "drogba",
+      "department": "forvet",
+      "salary": 11,
       "id": 3
+    },
+    {
+      "name": "falcao",
+      "department": "forvet",
+      "salary": 9,
+      "id": 4
     }
   ]
 }
