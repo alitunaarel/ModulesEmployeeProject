@@ -4,9 +4,7 @@ import {
 import {
     UI
 } from "./ui";
-import {
-    networkInterfaces
-} from "os";
+
 //selecting elements
 
 const form = document.getElementById("employee-form");
@@ -16,8 +14,13 @@ const salaryInput = document.getElementById("salary");
 const employeesList = document.getElementById("employees");
 const updateEmployeeButton = document.getElementById("update");
 
+
+
 const request = new Request("http://localhost:3000/employees");
 const ui = new UI();
+
+let updateState = null;
+
 
 
 eventListeners();
@@ -26,7 +29,11 @@ function eventListeners() {
     document.addEventListener("DOMContentLoaded", getAllEmployees);
     form.addEventListener("submit", addEmployee);
     employeesList.addEventListener("click", UpdateOrDelete);
+    updateEmployeeButton.addEventListener("click", updateEmployee);
+
 }
+
+
 
 function getAllEmployees() {
     request.get()
@@ -82,36 +89,30 @@ function deleteEmployee(targetEmployee) {
 
 function updateEmployeeController(targetEmployee) {
     ui.toggleUpdateButton(targetEmployee);
+
+    if (updateState === null) {
+        updateState = {
+            updateId: targetEmployee.children[3].textContent,
+            updateParent: targetEmployee
+        }
+    } else {
+        updateState = null;
+    }
 }
 
 
 
-
-
-
-
-
-
-
-// request.get()
-// .then(employees => console.log(employees))
-// .catch(err => console/log(err));
-
-// request.post({
-//     name:"Radamel Falcao",
-//     department: "Forvet",
-//     salary: 1000
-// }).then(employee => console.log(employee))
-// .catch(err => console.log(err));
-
-// request.put(1,{
-//     name:"Radamel Falcao",
-//     department: "defans",
-//     salary: 2000
-// }).then(employee => console.log(employee))
-// .catch(err => console.log(err));
-
-
-// request.delete(3)
-// .then((message => console.log(message)))
-// .catch(err=> console.log(err))
+function updateEmployee() {
+    if (updateState) {
+        const data = {
+            name: nameInput.value.trim(),
+            department: departmentInput.value.trim(),
+            salary: Number(salaryInput.value.trim())
+        };
+        request.put(updateState.updateId, data)
+            .then(updatedEmployee => {
+                ui.updateEmployeeOnUI(updatedEmployee, updateState.updateParent);
+            })
+            .catch(err => console.log(err));
+    }
+}

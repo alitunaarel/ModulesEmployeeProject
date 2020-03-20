@@ -8,7 +8,7 @@
     },
     {
       "name": "drogba",
-      "department": "forvet",
+      "department": "kaleci",
       "salary": 11,
       "id": 3
     },
@@ -17,6 +17,12 @@
       "department": "forvet",
       "salary": 9,
       "id": 4
+    },
+    {
+      "name": "wesley",
+      "department": "Orta saha",
+      "salary": 30000,
+      "id": 5
     }
   ]
 }
