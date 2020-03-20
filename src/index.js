@@ -64,6 +64,7 @@ function UpdateOrDelete(e) {
         deleteEmployee(e.target);
 
     } else if (e.target.id === "update-employee") {
+        updateEmployeeController(e.target.parentElement.parentElement)
 
     }
 }
@@ -79,7 +80,9 @@ function deleteEmployee(targetEmployee) {
 }
 
 
-
+function updateEmployeeController(targetEmployee) {
+    ui.toggleUpdateButton(targetEmployee);
+}
 
 
 
